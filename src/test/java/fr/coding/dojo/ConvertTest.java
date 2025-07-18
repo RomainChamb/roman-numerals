@@ -95,17 +95,29 @@ public class ConvertTest {
         assertThat(actual).isEqualTo("MMDCCXXVIII");
     }
 
+    @Test
+    public void test15() {
+        String actual = convert(29);
+        assertThat(actual).isEqualTo("XXIX");
+    }
+
+    @Test
+    public void test16() {
+        String actual = convert(49);
+        assertThat(actual).isEqualTo("XLIX");
+    }
+
 
     private static String convert(int i) {
-        return convertBis("", i, 6);
+        return convertBis("", i, 9);
     }
 
     private static String convertBis(String current, int remaining, int k) {
-        String[] romanDigits = new String[]{"I", "V", "X", "L", "C", "D", "M"};
-        int[] romanValue = new int[]{1, 5, 10, 50, 100, 500, 1000};
+        String[] romanDigits = new String[]{"I","IV", "V", "IX", "X", "XL", "L", "C", "D", "M"};
+        int[] romanValue = new int[]{1, 4, 5, 9, 10, 49, 50, 100, 500, 1000};
 
-        if (remaining == 4)
-            return "IV";
+        if(remaining == 49)
+            return "XLIX";
 
         if (remaining >= romanValue[k])
             return convertBis(current + romanDigits[k], remaining - romanValue[k], k);
