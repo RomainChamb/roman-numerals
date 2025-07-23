@@ -114,10 +114,7 @@ public class ConvertTest {
 
     private static String convertBis(String current, int remaining, int k) {
         String[] romanDigits = new String[]{"I","IV", "V", "IX", "X", "XL", "L", "C", "D", "M"};
-        int[] romanValue = new int[]{1, 4, 5, 9, 10, 49, 50, 100, 500, 1000};
-
-        if(remaining == 49)
-            return "XLIX";
+        int[] romanValue = new int[]{1, 4, 5, 9, 10, 40, 50, 100, 500, 1000};
 
         if (remaining >= romanValue[k])
             return convertBis(current + romanDigits[k], remaining - romanValue[k], k);
